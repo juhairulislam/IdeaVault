@@ -10,13 +10,13 @@ import 'swiper/css/navigation';
 
 const slides = [
   {
-    image: '/banner-1.jpg',
+    image: '/banner-2.jpg',
     eyebrow: 'Launch Something Real',
     headline: 'Where Great Startup Ideas Begin',
     sub: 'Discover innovative ideas, validate concepts with real people, and turn thoughts into momentum.',
   },
   {
-    image: '/banner-2.jpg',
+    image: '/banner-4.jpg',
     eyebrow: 'Shape Your Concept',
     headline: 'Get Feedback Before You Build',
     sub: 'Share your startup idea, receive insights from creators and thinkers, and refine your concept through discussion.',
