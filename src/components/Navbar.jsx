@@ -75,7 +75,7 @@ const Navbar = () => {
                         />
                     </div>
                     <span className="font-bold text-lg text-slate-800 dark:text-white tracking-tight">
-                        IdeaVault
+                        Idea<span className='text-green-500'>Vault</span> 
                     </span>
                 </Link>
 
