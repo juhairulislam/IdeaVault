@@ -79,7 +79,7 @@ const Banner = () => {
                     {slide.sub}
                   </p>
 
-                  <Link href="/idea"
+                  <Link href="/ideas"
                     className="inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-300 text-black font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-colors duration-200 group/btn"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}>
                     Explore Ideas
