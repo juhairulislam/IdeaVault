@@ -79,7 +79,7 @@ const Banner = () => {
                   </p>
 
                   <Link href="/ideas"
-                    className="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-colors duration-200 group/btn"
+                    className="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-400 text-white font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-colors duration-200 group/btn"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}>
                     Explore Ideas
                     <svg className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1"
