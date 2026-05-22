@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 const navLinks = [
     { href: '/', label: 'Home' },
@@ -17,34 +18,18 @@ const Navbar = () => {
     const pathname = usePathname();
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
     const dropdownRef = useRef(null);
 
-    // Sync theme with localStorage and document class on mount
+    // Ensure component is mounted to safely read the theme
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            setIsDarkMode(true);
-            document.documentElement.classList.add('dark');
-        } else {
-            setIsDarkMode(false);
-            document.documentElement.classList.remove('dark');
-        }
+        setMounted(true);
     }, []);
 
-    // Toggle theme function
+    // Toggle theme function using next-themes
     const toggleTheme = () => {
-        if (isDarkMode) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-            setIsDarkMode(false);
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-            setIsDarkMode(true);
-        }
+        setTheme(theme === 'dark' ? 'light' : 'dark');
     };
 
     // Close dropdown when clicking outside
@@ -102,19 +87,23 @@ const Navbar = () => {
                     {/* Theme Toggle Button */}
                     <button
                         onClick={toggleTheme}
-                        className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
+                        className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all min-w-[34px] min-h-[34px] flex items-center justify-center"
                         aria-label="Toggle Theme"
                     >
-                        {isDarkMode ? (
-                            // Sun Icon for Light Mode
-                            <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728A9 9 0 115.636 5.636m12.728 12.728A9 9 0 015.636 5.636" />
-                            </svg>
+                        {mounted ? (
+                            theme === 'dark' ? (
+                                // Sun Icon for Light Mode
+                                <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728A9 9 0 115.636 5.636m12.728 12.728A9 9 0 015.636 5.636" />
+                                </svg>
+                            ) : (
+                                // Moon Icon for Dark Mode
+                                <svg className="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                </svg>
+                            )
                         ) : (
-                            // Moon Icon for Dark Mode
-                            <svg className="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                            </svg>
+                            <div className="w-4 h-4" />
                         )}
                     </button>
 
@@ -145,8 +134,6 @@ const Navbar = () => {
                         {/* Dropdown menu */}
                         {dropdownOpen && (
                             <div className="absolute right-0 mt-2 w-52 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl py-2 z-50">
-
-                                {/* User info header */}
                                 <div className="px-4 py-2.5 border-b border-slate-100 dark:border-slate-700 mb-1">
                                     <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Juhair UI</p>
                                     <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">juhair@example.com</p>
@@ -164,9 +151,7 @@ const Navbar = () => {
                                 <div className="my-1.5 mx-3 h-px bg-slate-100 dark:bg-slate-700" />
 
                                 <button
-                                    onClick={() => {
-                                        setDropdownOpen(false);
-                                    }}
+                                    onClick={() => setDropdownOpen(false)}
                                     className="flex items-center gap-3 w-full mx-2 px-3 py-2.5 rounded-xl text-sm text-red-500 font-medium hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
                                     style={{ width: 'calc(100% - 16px)' }}
                                 >
