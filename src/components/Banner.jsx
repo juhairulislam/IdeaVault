@@ -53,8 +53,8 @@ const Banner = () => {
                 priority
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+              <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/10" />
 
               <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24">
                 <div className="max-w-2xl">
