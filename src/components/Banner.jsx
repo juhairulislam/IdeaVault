@@ -1,12 +1,12 @@
 'use client';
 
-import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const slides = [
   {
@@ -30,18 +30,17 @@ const slides = [
 ];
 
 const Banner = () => {
-  const swiperRef = useRef(null);
-
   return (
     <div className="w-full relative group">
       <Swiper
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay, Pagination, Navigation]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        loop={true}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
+        navigation={{
+          nextEl: '.swiper-button-next-custom',
+          prevEl: '.swiper-button-prev-custom',
         }}
+        loop={true}
         className="w-full"
       >
         {slides.map((slide, i) => (
@@ -60,8 +59,8 @@ const Banner = () => {
               <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-24">
                 <div className="max-w-2xl">
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="w-8 h-px bg-amber-400" />
-                    <span className="text-amber-400 text-xs font-semibold tracking-[0.2em] uppercase"
+                    <span className="w-8 h-px bg-emerald-400" />
+                    <span className="text-emerald-400 text-xs font-semibold tracking-[0.2em] uppercase"
                       style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       {slide.eyebrow}
                     </span>
@@ -72,7 +71,7 @@ const Banner = () => {
                     {slide.headline}
                   </h1>
 
-                  <div className="w-16 h-1 bg-amber-400 mb-6 rounded-full" />
+                  <div className="w-16 h-1 bg-emerald-400 mb-6 rounded-full" />
 
                   <p className="text-white/75 text-base sm:text-lg leading-relaxed mb-10 max-w-xl"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -80,7 +79,7 @@ const Banner = () => {
                   </p>
 
                   <Link href="/ideas"
-                    className="inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-300 text-black font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-colors duration-200 group/btn"
+                    className="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-colors duration-200 group/btn"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}>
                     Explore Ideas
                     <svg className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1"
@@ -96,14 +95,12 @@ const Banner = () => {
       </Swiper>
 
       <button 
-        onClick={() => swiperRef.current?.slidePrev()}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-amber-400 hover:text-black text-amber-400 w-10 h-10 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
+        className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-emerald-500 hover:text-white text-emerald-400 w-10 h-10 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
       >
         ❮
       </button>
       <button 
-        onClick={() => swiperRef.current?.slideNext()}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-amber-400 hover:text-black text-amber-400 w-10 h-10 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
+        className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-emerald-500 hover:text-white text-emerald-400 w-10 h-10 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
       >
         ❯
       </button>
