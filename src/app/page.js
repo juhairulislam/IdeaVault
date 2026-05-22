@@ -1,7 +1,10 @@
+import Banner from "@/components/Banner";
 
 export default function Home() {
   return (
-    <div className="w-[85%] mx-auto">
+    <div className="container mx-auto">
+
+      <Banner></Banner>
       
     </div>
   );

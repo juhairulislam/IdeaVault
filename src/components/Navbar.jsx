@@ -17,7 +17,7 @@ const Navbar = () => {
     const pathname = usePathname();
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
     const dropdownRef = useRef(null);
 
     // Sync theme with localStorage and document class on mount
