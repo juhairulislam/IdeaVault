@@ -3,18 +3,11 @@ import IdeaCard from '@/components/IdeaCard';
 import { BiLayer, BiSearchAlt } from 'react-icons/bi';
 
 const fetchIdeas = async () => {
-    try {
-        const res = await fetch(`${process.env.SERVER_URL}/ideas`, {
-            next: { revalidate: 60 } // Next.js performance data revalidation rule
-        });
+const res = await fetch(`${process.env.SERVER_URL}/ideas`, { next: { revalidate: 60 } });
+if (!res.ok) return [];
 
-        if (!res.ok) throw new Error('Failed to fetch ideas portfolio data');
-        const data = await res.json();
-        return data || [];
-    } catch (error) {
-        console.error('Data pipeline exception context:', error);
-        return [];
-    }
+const data = await res.json();
+return data || [];
 };
 
 const IdeasPage = async () => {

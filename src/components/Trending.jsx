@@ -5,21 +5,11 @@ import { HiLightningBolt } from 'react-icons/hi';
 import Link from 'next/link';
 
 const fetchTrendingIdeas = async () => {
-    try {
-        const res = await fetch(`${process.env.SERVER_URL}/trending`, {
-            next: { revalidate: 60 }
-        });
+  const res = await fetch(`${process.env.SERVER_URL}/trending`, { next: { revalidate: 60 } });
+if (!res.ok) return [];
 
-        if (!res.ok) {
-            throw new Error('Data pipeline extraction failure');
-        }
-
-        const data = await res.json();
-        return data || [];
-    } catch (error) {
-        console.error('Trending engine exception context:', error);
-        return [];
-    }
+const data = await res.json();
+return data || [];
 };
 
 const TrendingPage = async () => {
