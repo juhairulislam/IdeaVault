@@ -164,7 +164,6 @@ const SignupPage = () => {
                                 )}
                             </div>
 
-                            {/* Explicit Submission Action Trigger */}
                             <button
                                 type="submit"
                                 className="w-full mt-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-zinc-950 font-medium rounded-xl shadow-sm shadow-emerald-600/10 dark:shadow-emerald-500/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-sm cursor-pointer"
@@ -177,7 +176,7 @@ const SignupPage = () => {
                         <div className="relative flex items-center py-1">
                             <div className="flex-grow border-t border-zinc-200 dark:border-zinc-800" />
                             <span className="flex-shrink mx-4 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
-                                Or continue with
+                                Or 
                             </span>
                             <div className="flex-grow border-t border-zinc-200 dark:border-zinc-800" />
                         </div>
