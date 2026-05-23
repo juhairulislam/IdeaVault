@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner";
 import InnovationStats from "@/components/InnovationStats";
 import StartupRoadmap from "@/components/StartUpRoadMap";
+import TopInnovators from "@/components/TopInnovators";
 import TrendingPage from "@/components/Trending";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <TrendingPage></TrendingPage>
       <InnovationStats></InnovationStats>
       <StartupRoadmap></StartupRoadmap>
+      <TopInnovators></TopInnovators>
       
     </div>
   );
