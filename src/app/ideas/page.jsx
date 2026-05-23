@@ -34,8 +34,7 @@ const IdeasPage = async () => {
                         <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-zinc-50 sm:text-4xl">
                             Explore Startup Ideas            </h1>
                         <p className="mt-2 text-base text-slate-600 dark:text-zinc-400">
-                            Explore hyper-optimized strategies and modern technical platform frameworks.
-                        </p>
+                            Discover innovative concepts, share your feedback, and collaborate on the next big breakthrough.                        </p>
                     </div>
 
                     {/* Informative Counter Metric Element */}
