@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { 
   BiFolder, 
@@ -11,6 +12,7 @@ import {
 
 const IdeaCard = ({ idea }) => {
   const {
+    _id,
     title,
     shortDescription,
     category,
@@ -87,11 +89,14 @@ const IdeaCard = ({ idea }) => {
         </div>
 
         {/* System Interactive CTA Anchor */}
-        <div className="mt-6 pt-4 border-t border-slate-100 dark:border-zinc-800">
-          <button className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-900 transition-all duration-200 hover:bg-emerald-600 hover:text-white dark:bg-zinc-800/50 dark:text-zinc-200 dark:hover:bg-emerald-500 dark:hover:text-zinc-950">
-            Explore Concept Blueprint
+        <div className="mt-6 pt-4 border-t border-slate-100 dark:border-zinc-800/80">
+          <Link
+            href={`/ideas/${_id}`}
+            className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-900 transition-all duration-200 hover:bg-emerald-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:bg-zinc-800/50 dark:text-zinc-200 dark:hover:bg-emerald-500 dark:hover:text-zinc-950 dark:focus:ring-offset-zinc-900"
+          >
+            View Details
             <BiChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </button>
+          </Link>
         </div>
       </div>
     </article>
