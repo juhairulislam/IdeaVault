@@ -28,7 +28,7 @@ const TrendingPage = async () => {
     return (
         <div className="min-h-screen bg-zinc-50 px-4 py-16 transition-colors duration-300 dark:bg-zinc-950 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
-                
+
 
                 <header className="relative mb-16 flex flex-col items-center text-center">
 
@@ -51,21 +51,12 @@ const TrendingPage = async () => {
                     </p>
 
 
-                    <div className="mt-8">
-                        <Link
-                            href="/ideas"
-                            className="group inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-emerald-600/10 transition-all duration-300 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] dark:bg-emerald-500 dark:text-zinc-950 dark:shadow-none dark:hover:bg-emerald-400"
-                        >
-                            <span>Browse All Ideas</span>
-                            <BiArrowToRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </Link>
-                    </div>
+
 
 
                     <div className="mt-12 h-[1px] w-full max-w-xl bg-linear-to-r from-transparent via-zinc-200 to-transparent dark:via-zinc-800" />
                 </header>
 
-                {/* Main Component Render Layer / Empty State Pipeline */}
                 {trendingIdeas.length === 0 ? (
                     <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-200/80 bg-white/50 py-20 text-center dark:border-zinc-800/80 dark:bg-zinc-900/20">
                         <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-400 dark:bg-zinc-900 dark:text-zinc-600">
@@ -85,6 +76,16 @@ const TrendingPage = async () => {
                         ))}
                     </div>
                 )}
+
+                <div className="mt-8 flex justify-center">
+                    <Link
+                        href="/ideas"
+                        className="group inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-emerald-600/10 transition-all duration-300 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] dark:bg-emerald-500 dark:text-zinc-950 dark:shadow-none dark:hover:bg-emerald-400"
+                    >
+                        <span>Browse All Ideas</span>
+                        <BiArrowToRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
+                </div>
 
             </div>
         </div>
