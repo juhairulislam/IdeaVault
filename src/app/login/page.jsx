@@ -4,8 +4,8 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
 const LoginPage = () => {
-  // Static state placeholders for your future implementation
-  const handleSubmit = (e) => {
+
+    const handleSubmit = (e) => {
     e.preventDefault();
   };
 
@@ -13,9 +13,9 @@ const LoginPage = () => {
     <div className="min-h-screen w-full flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-5xl w-full bg-white dark:bg-zinc-900 rounded-2xl shadow-xl dark:shadow-zinc-950/50 overflow-hidden grid md:grid-cols-2 border border-zinc-100 dark:border-zinc-800/80 m-4">
         
-        {/* Left Side: Branding & Visual Panel */}
+
         <div className="hidden md:flex flex-col justify-between p-12 bg-linear-to-br from-emerald-500 to-teal-600 text-white relative overflow-hidden">
-          {/* Subtle Background Geometric Pattern Overlay */}
+
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
           
           <div className="relative z-10">
@@ -72,8 +72,9 @@ const LoginPage = () => {
                   </span>
                   <input
                     type="email"
+                    name='email'
                     required
-                    placeholder="name@company.com"
+                    placeholder="Enter Your Email"
                     className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700/60 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 dark:focus:border-emerald-500 transition-all duration-200"
                   />
                 </div>
@@ -93,11 +94,12 @@ const LoginPage = () => {
                   <input
                     type="password"
                     required
+                    name='password'
                     placeholder="••••••••"
                     className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700/60 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 dark:focus:border-emerald-500 transition-all duration-200"
                   />
                 </div>
-                {/* Forgot Password Plain Text Below Input */}
+
                 <div className="flex justify-end mt-1.5">
                   <span className="text-xs font-medium text-green-500 dark:text-green-500 select-none">
                     Forgot password?
@@ -105,7 +107,7 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              {/* Submit Button Component */}
+
               <button
                 type="submit"
                 className="w-full mt-2 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-medium text-sm rounded-xl shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/20 transition-all duration-200 flex items-center justify-center gap-2"
@@ -129,7 +131,6 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* Third-Party Authentication Service Provider (Google) */}
             <button
               type="button"
               className="w-full py-3 px-4 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 font-medium text-sm rounded-xl transition-all duration-200 flex items-center justify-center gap-2.5 active:scale-[0.99]"
