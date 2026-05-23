@@ -73,7 +73,7 @@ const SignupPage = () => {
                         </div>
 
                         {/* Registration Form Core Structure */}
-                        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                        <form onSubmit={handleSubmit} className="space-y-4">
 
                             {/* Profile Name Input Frame */}
                             <div className="space-y-1.5">
