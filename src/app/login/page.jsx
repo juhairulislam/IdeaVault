@@ -13,7 +13,7 @@ const LoginPage = () => {
       <div className="max-w-5xl w-full bg-white dark:bg-zinc-900 rounded-2xl shadow-xl dark:shadow-zinc-950/50 overflow-hidden grid md:grid-cols-2 border border-zinc-100 dark:border-zinc-800/80 m-4">
         
         {/* Left Side: Branding & Visual Panel */}
-        <div className="hidden md:flex flex-col justify-between p-12 bg-gradient-to-br from-emerald-500 to-teal-800 text-white relative overflow-hidden">
+        <div className="hidden md:flex flex-col justify-between p-12 bg-linear-to-br from-emerald-500 to-teal-600 text-white relative overflow-hidden">
           {/* Subtle Background Geometric Pattern Overlay */}
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
           
@@ -38,8 +38,8 @@ const LoginPage = () => {
           </div>
 
           <div className="relative z-10 pt-6 border-t border-white/10 flex items-center justify-between text-xs text-emerald-200/80">
-            <span>Enterprise Grade Platform</span>
-            <span>v1.0.0</span>
+            {/* <span>Enterprise Grade Platform</span> */}
+            {/* <span>v1.0.0</span> */}
           </div>
         </div>
 
@@ -98,7 +98,7 @@ const LoginPage = () => {
                 </div>
                 {/* Forgot Password Plain Text Below Input */}
                 <div className="flex justify-end mt-1.5">
-                  <span className="text-xs font-medium text-zinc-400 dark:text-zinc-500 select-none">
+                  <span className="text-xs font-medium text-green-500 dark:text-green-500 select-none">
                     Forgot password?
                   </span>
                 </div>
