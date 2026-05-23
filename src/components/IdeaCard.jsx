@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { 
   BiFolder, 
@@ -24,11 +23,9 @@ const IdeaCard = ({ idea }) => {
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white transition-all duration-300 ease-out hover:-translate-y-1 hover:border-emerald-500/30 hover:shadow-[0_12px_30px_-10px_rgba(16,185,129,0.12)] dark:border-zinc-800/80 dark:bg-zinc-900 dark:hover:border-emerald-500/30 dark:hover:shadow-[0_12px_30px_-10px_rgba(16,185,129,0.08)]">
       {/* Visual Asset Container */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 dark:bg-zinc-800">
-        <Image
+        <img
           src={imageURL || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'}
           alt={title}
-          width={200}
-          height={200}
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           loading="lazy"
         />
