@@ -29,40 +29,40 @@ const TrendingPage = async () => {
         <div className="min-h-screen bg-zinc-50 px-4 py-16 transition-colors duration-300 dark:bg-zinc-950 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
                 
-                {/* Re-Architected Centered Premium Header Block */}
+
                 <header className="relative mb-16 flex flex-col items-center text-center">
-                    {/* Subtle Top Ambient Accent Flare */}
+
                     <div className="absolute top-0 -z-10 h-32 w-72 rounded-full bg-emerald-500/10 blur-3xl dark:bg-emerald-500/5" />
 
-                    {/* Centered High-Engagement Accent Badge */}
+
                     <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3.5 py-1.5 text-xs font-medium text-emerald-700 shadow-sm transition-all hover:bg-emerald-100/80 dark:bg-emerald-500/10 dark:text-emerald-400 dark:hover:bg-emerald-500/20">
                         <HiLightningBolt className="h-3.5 w-3.5 animate-pulse text-emerald-600 dark:text-emerald-400" />
                         <span className="tracking-wide">High-Engagement Ecosystem Index</span>
                     </div>
 
-                    {/* Main High-Contrast Title */}
+
                     <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
                         Trending Innovations
                     </h1>
 
-                    {/* Maximized Structural Subtitle */}
+
                     <p className="mt-4 max-w-3xl text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
                         Explore highly validated concepts backed by community interaction, real-time feedback volume, and scalable market viability parameters.
                     </p>
 
-                    {/* Reusable Primary Navigation Call-To-Action Button */}
+
                     <div className="mt-8">
                         <Link
                             href="/ideas"
                             className="group inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-emerald-600/10 transition-all duration-300 hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] dark:bg-emerald-500 dark:text-zinc-950 dark:shadow-none dark:hover:bg-emerald-400"
                         >
-                            <span>Browse All Innovations</span>
+                            <span>Browse All Ideas</span>
                             <BiArrowToRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                         </Link>
                     </div>
 
-                    {/* Modular Border-Symmetry Separator */}
-                    <div className="mt-12 h-[1px] w-full max-w-xl bg-gradient-to-r from-transparent via-zinc-200 to-transparent dark:via-zinc-800" />
+
+                    <div className="mt-12 h-[1px] w-full max-w-xl bg-linear-to-r from-transparent via-zinc-200 to-transparent dark:via-zinc-800" />
                 </header>
 
                 {/* Main Component Render Layer / Empty State Pipeline */}
