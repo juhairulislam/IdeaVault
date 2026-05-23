@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -140,9 +141,9 @@ const LoginPage = () => {
             {/* Bottom Redirect Context */}
             <p className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
               New to our platform?{' '}
-              <a href="#register" className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline transition-all">
+              <Link href="/signup" className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline transition-all">
                 Create an account
-              </a>
+              </Link>
             </p>
           </div>
         </div>
