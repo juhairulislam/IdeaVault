@@ -39,7 +39,7 @@ const IdeasPage = async () => {
 
                     {/* Informative Counter Metric Element */}
                     <div className="text-sm font-medium text-slate-500 dark:text-zinc-500">
-                        Showing <span className="font-semibold text-slate-900 dark:text-zinc-200">{ideas.length}</span> verified pipelines
+                        Total Ideas: <span className="font-semibold text-slate-900 dark:text-zinc-200">{ideas.length}</span> 
                     </div>
                 </header>
 
