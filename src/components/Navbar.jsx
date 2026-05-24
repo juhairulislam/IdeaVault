@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { authClient } from '@/lib/auth-client';
 
 const navLinks = [
     { href: '/', label: 'Home' },
@@ -22,7 +23,6 @@ const Navbar = () => {
     const [mounted, setMounted] = useState(false);
     const dropdownRef = useRef(null);
 
-    // Ensure component is mounted to safely read the theme
     useEffect(() => {
         setMounted(true);
     }, []);
@@ -43,6 +43,15 @@ const Navbar = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+
+const router = useRouter() ;
+
+    const handleLogOut = async () => {
+        await authClient.signOut();
+
+        router.push('/')
+    }
+
     return (
         <nav className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-50 transition-colors duration-300">
 
@@ -60,7 +69,7 @@ const Navbar = () => {
                         />
                     </div>
                     <span className="font-bold text-lg text-slate-800 dark:text-white tracking-tight">
-                        Idea<span className='text-green-500'>Vault</span> 
+                        Idea<span className='text-green-500'>Vault</span>
                     </span>
                 </Link>
 
@@ -151,8 +160,11 @@ const Navbar = () => {
                                 <div className="my-1.5 mx-3 h-px bg-slate-100 dark:bg-slate-700" />
 
                                 <button
-                                    onClick={() => setDropdownOpen(false)}
-                                    className="flex items-center gap-3 w-full mx-2 px-3 py-2.5 rounded-xl text-sm text-red-500 font-medium hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
+
+                                    onClick={() => {
+                                        setDropdownOpen(false);
+                                        handleLogOut();
+                                    }} className="flex items-center gap-3 w-full mx-2 px-3 py-2.5 rounded-xl text-sm text-red-500 font-medium hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
                                     style={{ width: 'calc(100% - 16px)' }}
                                 >
                                     <span className="text-base">🚪</span>
