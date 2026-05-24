@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -11,14 +12,26 @@ const SignupPage = () => {
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
 
-    const handleSubmit =async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // console.log(e.currentTarget)
-        const formData = new FormData(e.currentTarget) ;
+        const formData = new FormData(e.currentTarget);
         // console.log(formData)
 
         const signUpData = Object.fromEntries(formData.entries())
         // console.log(signUpData)
+
+
+        const { data, error } = await authClient.signUp.email({
+
+            ...signUpData, 
+            callbackURL:'/'
+
+        }
+        );
+
+
+
     };
 
     return (
@@ -182,7 +195,7 @@ const SignupPage = () => {
                         <div className="relative flex items-center py-1">
                             <div className="flex-grow border-t border-zinc-200 dark:border-zinc-800" />
                             <span className="flex-shrink mx-4 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
-                                Or 
+                                Or
                             </span>
                             <div className="flex-grow border-t border-zinc-200 dark:border-zinc-800" />
                         </div>
