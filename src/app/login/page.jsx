@@ -20,7 +20,7 @@ const LoginPage = () => {
     // console.log(formData)
 
     const signInData = Object.fromEntries(formData.entries())
-    // console.log(signUpData)
+    // console.log(signInData)
 
 
     const { data, error } = await authClient.signIn.email({

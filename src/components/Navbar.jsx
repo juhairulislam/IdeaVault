@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { authClient } from '@/lib/auth-client';
+import { authClient, useSession } from '@/lib/auth-client';
 
 const navLinks = [
     { href: '/', label: 'Home' },
@@ -51,6 +51,12 @@ const router = useRouter() ;
 
         router.push('/')
     }
+
+
+
+    const {data:session , isPending} = useSession() ;
+
+    console.log(session)
 
     return (
         <nav className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-50 transition-colors duration-300">
