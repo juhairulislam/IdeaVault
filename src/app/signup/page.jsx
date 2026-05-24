@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 
 const SignupPage = () => {
@@ -29,6 +30,12 @@ const SignupPage = () => {
 
         }
         );
+
+        if(error){
+            toast.error(error.message)
+        }else{
+            toast.success('Successful sign up')
+        }
 
 
 
