@@ -2,11 +2,16 @@
 import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 
 const SignupPage = () => {
+
+    const router = useRouter();
+
+
     const [password, setPassword] = useState('');
 
     const hasMinLength = password.length >= 6;
@@ -14,6 +19,7 @@ const SignupPage = () => {
     const hasLowercase = /[a-z]/.test(password);
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         // console.log(e.currentTarget)
         const formData = new FormData(e.currentTarget);
@@ -25,17 +31,19 @@ const SignupPage = () => {
 
         const { data, error } = await authClient.signUp.email({
 
-            ...signUpData, 
-            callbackURL:'/'
+            ...signUpData,
 
         }
         );
 
-        if(error){
-            toast.error(error.message)
-        }else{
+        if (error) {
+            toast.error(error.message) ;
+            return ;
+        } else {
             toast.success('Successful sign up')
         }
+
+        router.push('/')
 
 
 
