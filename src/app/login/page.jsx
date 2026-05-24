@@ -4,11 +4,10 @@ import Link from 'next/link';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
-import { useRouter, useSearchParams } from 'next/navigation';
+import {  useSearchParams } from 'next/navigation';
 
 const LoginPage = () => {
 
-  const router = useRouter();
     const searchParams = useSearchParams();
     const destination = searchParams.get('callbackUrl') || '/';
 
@@ -38,9 +37,7 @@ const LoginPage = () => {
       toast.success('Successful Login')
     }
 
-    window.location.reload();
-    router.push(destination);
-  };
+window.location.href = destination;  };
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
