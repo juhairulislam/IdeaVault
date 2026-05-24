@@ -11,9 +11,14 @@ const SignupPage = () => {
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
 
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget)
+        // console.log(e.currentTarget)
+        const formData = new FormData(e.currentTarget) ;
+        // console.log(formData)
+
+        const signUpData = Object.fromEntries(formData.entries())
+        console.log(signUpData)
     };
 
     return (
