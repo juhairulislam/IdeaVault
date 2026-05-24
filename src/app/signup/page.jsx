@@ -18,7 +18,7 @@ const SignupPage = () => {
         // console.log(formData)
 
         const signUpData = Object.fromEntries(formData.entries())
-        console.log(signUpData)
+        // console.log(signUpData)
     };
 
     return (
