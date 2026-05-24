@@ -1,23 +1,48 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 
 const LoginPage = () => {
 
-    const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
+
+    // console.log(e.currentTarget)
+    const formData = new FormData(e.currentTarget);
+    // console.log(formData)
+
+    const signInData = Object.fromEntries(formData.entries())
+    // console.log(signUpData)
+
+
+    const { data, error } = await authClient.signIn.email({
+
+      ...signInData,
+      callbackURL:'/'
+
+    }
+    );
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    } else {
+      toast.success('Successful Login')
+    }
   };
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-5xl w-full bg-white dark:bg-zinc-900 rounded-2xl shadow-xl dark:shadow-zinc-950/50 overflow-hidden grid md:grid-cols-2 border border-zinc-100 dark:border-zinc-800/80 m-4">
-        
+
 
         <div className="hidden md:flex flex-col justify-between p-12 bg-linear-to-br from-emerald-500 to-teal-600 text-white relative overflow-hidden">
 
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-          
+
           <div className="relative z-10">
             <div className="flex items-center gap-2.5">
               <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md border border-white/20">
