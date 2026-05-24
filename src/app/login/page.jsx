@@ -29,7 +29,8 @@ const LoginPage = () => {
     }
     );
 
-  
+    const { data: tokenData } = await authClient.token() ;
+    console.log(tokenData)
 
 
 
