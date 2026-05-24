@@ -4,14 +4,14 @@ import Link from 'next/link';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
-import {  useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 const LoginPage = () => {
 
-    const searchParams = useSearchParams();
-    const destination = searchParams.get('callbackUrl') || '/';
+  const searchParams = useSearchParams();
+  const destination = searchParams.get('callbackUrl') || '/';
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // console.log(e.currentTarget)
@@ -37,7 +37,8 @@ const LoginPage = () => {
       toast.success('Successful Login')
     }
 
-window.location.href = destination;  };
+    window.location.href = destination;
+  };
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4 sm:px-6 lg:px-8 transition-colors duration-300">

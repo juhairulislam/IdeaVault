@@ -5,13 +5,12 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
-import { useRouter, useSearchParams } from 'next/navigation';
+import {  useSearchParams } from 'next/navigation';
 
 
 
 const SignupPage = () => {
 
-    const router = useRouter();
     const searchParams = useSearchParams();
     const destination = searchParams.get('callbackUrl') || '/';
 
@@ -46,7 +45,7 @@ const SignupPage = () => {
             toast.success('Successful sign up')
         }
 
-router.push(destination);
+    window.location.href = destination;
 
     };
 
