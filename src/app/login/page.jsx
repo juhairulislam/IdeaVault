@@ -38,6 +38,7 @@ const LoginPage = () => {
       toast.success('Successful Login')
     }
 
+    window.location.reload();
     router.push(destination);
   };
 
