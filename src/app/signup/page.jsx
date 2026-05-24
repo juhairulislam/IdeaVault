@@ -225,7 +225,7 @@ const SignupPage = () => {
 
 
                         <p className="text-center text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-                            Already have an Account?{' '}
+                            Already have an account?{' '}
                             <Link
                                 href="/login"
                                 className="font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 underline underline-offset-4 decoration-zinc-200 dark:decoration-zinc-800 hover:decoration-emerald-500 transition-colors"
