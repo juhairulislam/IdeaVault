@@ -2,15 +2,18 @@
 import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+
 
 const SignupPage = () => {
 
     const router = useRouter();
-
+    const searchParams = useSearchParams();
+    const destination = searchParams.get('callbackUrl') || '/';
 
     const [password, setPassword] = useState('');
 
@@ -37,15 +40,13 @@ const SignupPage = () => {
         );
 
         if (error) {
-            toast.error(error.message) ;
-            return ;
+            toast.error(error.message);
+            return;
         } else {
             toast.success('Successful sign up')
         }
 
-        router.push('/')
-
-
+router.push(destination);
 
     };
 
