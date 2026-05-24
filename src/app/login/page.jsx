@@ -4,8 +4,13 @@ import Link from 'next/link';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const LoginPage = () => {
+
+  const router = useRouter();
+    const searchParams = useSearchParams();
+    const destination = searchParams.get('callbackUrl') || '/';
 
   const handleSubmit =async (e) => {
     e.preventDefault();
@@ -21,10 +26,10 @@ const LoginPage = () => {
     const { data, error } = await authClient.signIn.email({
 
       ...signInData,
-      callbackURL:'/'
 
     }
     );
+
 
     if (error) {
       toast.error(error.message);
@@ -32,6 +37,8 @@ const LoginPage = () => {
     } else {
       toast.success('Successful Login')
     }
+
+    router.push(destination);
   };
 
   return (
@@ -167,7 +174,7 @@ const LoginPage = () => {
             {/* Bottom Redirect Context */}
             <p className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
               New to our platform?{' '}
-              <Link href="/signup" className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline transition-all">
+              <Link href={`/signup?callbackUrl=${encodeURIComponent(destination)}`} className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline transition-all">
                 Create an account
               </Link>
             </p>
