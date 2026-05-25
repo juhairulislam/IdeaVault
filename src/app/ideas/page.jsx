@@ -3,7 +3,7 @@ import IdeaCard from '@/components/IdeaCard';
 import { BiLayer, BiSearchAlt } from 'react-icons/bi';
 
 const fetchIdeas = async () => {
-const res = await fetch(`${process.env.SERVER_URL}/ideas`, { next: { revalidate: 60 } });
+const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`, { next: { revalidate: 60 } });
 if (!res.ok) return [];
 
 const data = await res.json();

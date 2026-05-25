@@ -5,7 +5,7 @@ import { HiLightningBolt } from 'react-icons/hi';
 import Link from 'next/link';
 
 const fetchTrendingIdeas = async () => {
-  const res = await fetch(`${process.env.SERVER_URL}/trending`, { next: { revalidate: 60 } });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/trending`, { next: { revalidate: 60 } });
 if (!res.ok) return [];
 
 const data = await res.json();

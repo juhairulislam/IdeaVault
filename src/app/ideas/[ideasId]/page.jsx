@@ -1,20 +1,29 @@
-import { auth } from '@/lib/auth';
-import { headers } from 'next/headers';
 import React from 'react';
 
-const IdeaDetailsPage =async () => {
 
-      const token =   await auth.api.getToken({
-      
-        headers: await headers() 
-    });
+const fetchSingleIdeas = async (id) => {
 
-    console.log(token)
-    
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`);
+    const data = await res.json();
+    return data || {};
+
+
+}
+
+const IdeaDetailsPage = async ({ params }) => {
+
+    const { ideasId } = await params;
+
+    console.log(ideasId)
+
+    const ideas = await fetchSingleIdeas(ideasId)
+
+    console.log(ideas)
 
     return (
         <div>
-            This is idea details page 
+            This is details page
         </div>
     );
 };
