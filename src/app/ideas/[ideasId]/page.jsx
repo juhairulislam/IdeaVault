@@ -9,16 +9,32 @@ import {
   HiOutlineCalendarDays
 } from 'react-icons/hi2';
 import { BiCategory } from 'react-icons/bi';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
-const fetchSingleIdeas = async (id) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`);
+const fetchSingleIdeas = async (id , token) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`,{
+    headers:{
+      authorization : token || "" 
+    }
+  });
   const data = await res.json();
   return data || {};
 };
 
 const IdeaDetailsPage = async ({ params }) => {
+
+
+     const{ token} =   await auth.api.getToken({
+      
+        headers: await headers() 
+    });
+
+
   const { ideasId } = await params;
-  const ideas = await fetchSingleIdeas(ideasId);
+  const ideas = await fetchSingleIdeas(ideasId , token);
+
+
 
   const { 
     _id, 
@@ -36,17 +52,19 @@ const IdeaDetailsPage = async ({ params }) => {
     author 
   } = ideas;
 
-  // Safeguarding nested author objects safely
   const authorName = author?.name || 'Anonymous Innovator';
   const authorEmail = author?.email || 'hidden@ideavault.io';
   const authorPhoto = author?.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 
-  // Contextual timestamp parser
   const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
+
+
+
+
 
   return (
     <main className="min-h-screen bg-slate-50/50 text-slate-900 transition-colors duration-300 dark:bg-zinc-950 dark:text-zinc-50">
