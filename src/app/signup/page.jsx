@@ -9,12 +9,6 @@ import { useSearchParams } from 'next/navigation';
 
 
 
-export const metadata = {
-  title: "IdeaVault – Sign Up",
-  description: "This is Sign Up page of IdeaVault",
-};
-
-
 
 const SignupPage = () => {
 

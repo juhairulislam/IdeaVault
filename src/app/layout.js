@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "IdeaVault – Startup Idea Sharing Platform",
+  title: "IdeaVault | Startup Idea Sharing Platform",
   description: "IdeaVault is a web-based platform where users can share innovative startup ideas, explore ideas posted by others, and engage through comments, and discussions. The system encourages creativity, collaboration, and validation of ideas through community interaction",
 };
 

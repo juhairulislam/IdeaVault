@@ -4,7 +4,7 @@ import React from 'react';
 
 
 export const metadata = {
-  title: "IdeaVault –Add Interactions",
+  title: "IdeaVault | Add Interactions",
   description: "This is Add Interactions page of IdeaVault",
 };
 
