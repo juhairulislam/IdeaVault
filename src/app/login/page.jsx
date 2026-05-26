@@ -43,6 +43,16 @@ const LoginPage = () => {
     window.location.href = destination;
   };
 
+
+
+  const handleGoogleLogin =async () =>{
+
+     await authClient.signIn.social({
+    provider: "google",
+  });
+
+  }
+
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-5xl w-full bg-white dark:bg-zinc-900 rounded-2xl shadow-xl dark:shadow-zinc-950/50 overflow-hidden grid md:grid-cols-2 border border-zinc-100 dark:border-zinc-800/80 m-4">
@@ -160,12 +170,13 @@ const LoginPage = () => {
               </div>
               <div className="relative flex justify-center text-xs uppercase">
                 <span className="bg-white dark:bg-zinc-900 px-3 text-zinc-400 dark:text-zinc-500 font-medium">
-                  Or secure connection with
+                  Or 
                 </span>
               </div>
             </div>
 
             <button
+            onClick={handleGoogleLogin}
               type="button"
               className="w-full py-3 px-4 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 font-medium text-sm rounded-xl transition-all duration-200 flex items-center justify-center gap-2.5 active:scale-[0.99]"
             >
