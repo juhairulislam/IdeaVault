@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
-import { 
-  HiChevronRight, 
-  HiOutlineExclamationTriangle, 
-  HiOutlineLightBulb, 
-  HiOutlineUsers, 
+import {
+  HiChevronRight,
+  HiOutlineExclamationTriangle,
+  HiOutlineLightBulb,
+  HiOutlineUsers,
   HiOutlineCurrencyDollar,
   HiOutlineCalendarDays
 } from 'react-icons/hi2';
@@ -15,7 +15,7 @@ import { headers } from 'next/headers';
 const fetchSingleIdeas = async (id, token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`, {
     headers: {
-      authorization: `Bearer ${token}` || "" 
+      authorization: `Bearer ${token}` || ""
     }
   });
   const data = await res.json();
@@ -25,13 +25,13 @@ const fetchSingleIdeas = async (id, token) => {
 
 export async function generateMetadata({ params }) {
   const { ideasId } = await params;
-  
+
   const { token } = await auth.api.getToken({
     headers: await headers()
   });
 
   const ideas = await fetchSingleIdeas(ideasId, token);
-  
+
   return {
     title: ideas?.title ? `IdeaVault | ${ideas.title}` : 'IdeaVault | Innovation Detail',
     description: ideas?.shortDescription || 'Explore innovative ideas on IdeaVault.',
@@ -41,26 +41,26 @@ export async function generateMetadata({ params }) {
 const IdeaDetailsPage = async ({ params }) => {
 
   const { token } = await auth.api.getToken({
-    headers: await headers() 
+    headers: await headers()
   });
 
   const { ideasId } = await params;
   const ideas = await fetchSingleIdeas(ideasId, token);
 
-  const { 
-    _id, 
-    title, 
-    shortDescription, 
-    detailedDescription, 
-    category, 
-    tags = [], 
-    imageURL, 
-    estimatedBudget, 
-    targetAudience, 
-    problemStatement, 
-    proposedSolution, 
-    createdAt, 
-    author 
+  const {
+    _id,
+    title,
+    shortDescription,
+    detailedDescription,
+    category,
+    tags = [],
+    imageURL,
+    estimatedBudget,
+    targetAudience,
+    problemStatement,
+    proposedSolution,
+    createdAt,
+    author
   } = ideas;
 
   const authorName = author?.name || 'Anonymous Innovator';
@@ -77,7 +77,7 @@ const IdeaDetailsPage = async ({ params }) => {
     <main className="min-h-screen bg-slate-50/50 text-slate-900 transition-colors duration-300 dark:bg-zinc-950 dark:text-zinc-50">
       {/* Structural Inner Content Wrapper */}
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
-        
+
         {/* Navigation Breadcrumb Context Track */}
         <div className="mb-8 flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-zinc-400">
           <span className="hover:text-slate-700 dark:hover:text-zinc-200 transition-colors cursor-pointer">Innovations</span>
@@ -90,10 +90,10 @@ const IdeaDetailsPage = async ({ params }) => {
 
         {/* Core Layout Grid System */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          
+
           {/* Main Information Panels (Left Column) */}
           <div className="space-y-8 lg:col-span-2">
-            
+
             {/* Concept Identity Hero Segment */}
             <div className="space-y-4">
               <span className="inline-flex items-center rounded-full bg-gradient-to-r from-emerald-50 to-teal-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:from-emerald-950/40 dark:to-teal-950/40 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/40 shadow-sm">
@@ -117,13 +117,15 @@ const IdeaDetailsPage = async ({ params }) => {
                 className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 loading="eager"
                 priority
+                referrerPolicy="no-referrer"
+
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
             {/* Twin Concept Architecture Splitting Structure */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              
+
               {/* Problem Statement Focus Unit */}
               <div className="rounded-2xl border border-slate-200/60 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-zinc-800/60 dark:bg-zinc-900/40 backdrop-blur-sm">
                 <div className="mb-4 flex items-center gap-3">
@@ -167,7 +169,7 @@ const IdeaDetailsPage = async ({ params }) => {
 
           {/* Operational Metrics Side Deck Panels (Right Column) */}
           <div className="space-y-6 lg:col-span-1">
-            
+
             {/* Author Social Proof Anchor Panel */}
             <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm dark:border-zinc-800/80 dark:bg-zinc-900/80 backdrop-blur-sm">
               <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-zinc-500 mb-4">
@@ -175,8 +177,11 @@ const IdeaDetailsPage = async ({ params }) => {
               </h4>
               <div className="flex items-center gap-4">
                 <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-4 ring-emerald-500/10 dark:ring-emerald-400/20 shadow-inner">
-                  <img
-                    src={authorPhoto}
+                  <Image
+                    width={100}
+                    height={100}
+                    referrerPolicy="no-referrer"
+                     src={authorPhoto}
                     alt={authorName}
                     className="h-full w-full object-cover"
                   />
@@ -204,7 +209,7 @@ const IdeaDetailsPage = async ({ params }) => {
               <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-zinc-500">
                 Project Operational Framework
               </h4>
-              
+
               {/* Metric Item Line: Target Market */}
               <div className="flex items-start gap-3.5">
                 <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-slate-600 dark:bg-zinc-800 dark:text-zinc-300 border border-slate-100 dark:border-zinc-700/50 shadow-sm">

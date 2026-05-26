@@ -62,6 +62,7 @@ const IdeaCard = ({ idea }) => {
                   alt={author.name || 'Author'}
                   fill
                   className="object-cover"
+                  referrerPolicy="no-referrer"
                 />
               </div>
             ) : (

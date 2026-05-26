@@ -23,7 +23,7 @@ const AddIdeaPage = () => {
         const author = {
             name: user?.name || "Anonymous",
             email: user?.email || "No Email",
-            photo: user?.image || "default-photo-url"
+            photoURL: user?.image || "default-photo-url"
         };
 
 
