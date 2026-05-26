@@ -6,7 +6,7 @@ import CategorySelect from '@/components/CategorySelect';
 
 
 export const metadata = {
-  title: "IdeaVault –All Ideas",
+  title: "IdeaVault – All Ideas",
   description: "This is All Idea page of IdeaVault",
 };
 
