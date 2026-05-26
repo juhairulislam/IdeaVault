@@ -2,7 +2,13 @@ import React from 'react';
 import IdeaCard from '@/components/IdeaCard';
 import Form from 'next/form';
 import { BiLayer, BiSearchAlt, BiFilterAlt } from 'react-icons/bi';
-import CategorySelect from '@/components/CategorySelect'; // Separate client component for interactive select
+import CategorySelect from '@/components/CategorySelect'; 
+
+
+export const metadata = {
+  title: "IdeaVault –All Ideas",
+  description: "This is All Idea page of IdeaVault",
+};
 
 const fetchIdeas = async (searchQuery) => {
   const url = searchQuery 
