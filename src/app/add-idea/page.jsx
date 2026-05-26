@@ -1,6 +1,7 @@
 'use client'
 import { useSession } from '@/lib/auth-client';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const AddIdeaPage = () => {
 
@@ -42,7 +43,8 @@ const AddIdeaPage = () => {
         });
 
         const data = await res.json();
-        console.log(data);
+
+        toast.success('Add Idea Successfully')
     };
 
 

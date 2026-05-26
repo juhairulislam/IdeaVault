@@ -58,7 +58,7 @@ const IdeaCard = ({ idea }) => {
             {author?.photoURL ? (
               <div className="relative h-6 w-6 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200 dark:ring-zinc-800">
                 <Image
-                  src={author.photoURL}
+                  src={author.photoURL || 'https://images.unsplash.com/photo-1740252117044-2af197eea287'}
                   alt={author.name || 'Author'}
                   fill
                   className="object-cover"

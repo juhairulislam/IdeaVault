@@ -65,7 +65,7 @@ const IdeaDetailsPage = async ({ params }) => {
 
   const authorName = author?.name || 'Anonymous Innovator';
   const authorEmail = author?.email || 'hidden@ideavault.io';
-  const authorPhoto = author?.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
+  const authorPhoto = author?.photoURL || 'https://images.unsplash.com/photo-1740252117044-2af197eea287';
 
   const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
