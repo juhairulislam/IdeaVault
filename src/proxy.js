@@ -9,7 +9,7 @@ export async function proxy(request) {
     headers: await headers() // headers containing the user's session token
 });
 
-if(!session && !session?.user){
+if(!session || !session?.user){
 
     return NextResponse.redirect(new URL('/login', request.url))
 
