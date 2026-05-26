@@ -12,33 +12,40 @@ import { BiCategory } from 'react-icons/bi';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 
-
-
-
-
-const fetchSingleIdeas = async (id , token) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`,{
-    headers:{
-      authorization : `Bearer ${token}` || "" 
+const fetchSingleIdeas = async (id, token) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}` || "" 
     }
   });
   const data = await res.json();
   return data || {};
 };
 
+
+export async function generateMetadata({ params }) {
+  const { ideasId } = await params;
+  
+  const { token } = await auth.api.getToken({
+    headers: await headers()
+  });
+
+  const ideas = await fetchSingleIdeas(ideasId, token);
+  
+  return {
+    title: ideas?.title ? `IdeaVault | ${ideas.title}` : 'IdeaVault | Innovation Detail',
+    description: ideas?.shortDescription || 'Explore innovative ideas on IdeaVault.',
+  };
+}
+
 const IdeaDetailsPage = async ({ params }) => {
 
-
-     const{ token} =   await auth.api.getToken({
-      
-        headers: await headers() 
-    });
-
+  const { token } = await auth.api.getToken({
+    headers: await headers() 
+  });
 
   const { ideasId } = await params;
-  const ideas = await fetchSingleIdeas(ideasId , token);
-
-
+  const ideas = await fetchSingleIdeas(ideasId, token);
 
   const { 
     _id, 
@@ -65,10 +72,6 @@ const IdeaDetailsPage = async ({ params }) => {
     month: 'long',
     day: 'numeric',
   });
-
-
-
-
 
   return (
     <main className="min-h-screen bg-slate-50/50 text-slate-900 transition-colors duration-300 dark:bg-zinc-950 dark:text-zinc-50">
@@ -171,9 +174,7 @@ const IdeaDetailsPage = async ({ params }) => {
                 Concept Owner
               </h4>
               <div className="flex items-center gap-4">
-                {/* Profile Image Node with High-Contrast Framing */}
                 <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-4 ring-emerald-500/10 dark:ring-emerald-400/20 shadow-inner">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={authorPhoto}
                     alt={authorName}
