@@ -6,6 +6,13 @@ import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { useSearchParams } from 'next/navigation';
 
+
+
+export const metadata = {
+  title: "IdeaVault – Login",
+  description: "This is Login page of IdeaVault",
+};
+
 const LoginPage = () => {
 
   const searchParams = useSearchParams();
