@@ -7,7 +7,6 @@ const AddIdeaPage = () => {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-
     const { data: session, isPending } = useSession();
 
     const user = session?.user;
@@ -15,8 +14,8 @@ const AddIdeaPage = () => {
 
     const onSubmit = async (e) => {
 
-
         e.preventDefault();
+        setIsSubmitting(true);
 
         const formData = new FormData(e.currentTarget);
         const newIdeaData = Object.fromEntries(formData.entries());
@@ -30,7 +29,8 @@ const AddIdeaPage = () => {
 
         const finalData = {
             ...newIdeaData,
-            author: author
+            author: author,
+            createdAt: new Date().toISOString()
         };
 
 
@@ -44,7 +44,9 @@ const AddIdeaPage = () => {
 
         const data = await res.json();
 
-        toast.success('Add Idea Successfully')
+        setIsSubmitting(false);
+        toast.success('Add Idea Successfully');
+        e.target.reset();
     };
 
 
@@ -209,7 +211,6 @@ const AddIdeaPage = () => {
 
                         <div className="pt-2">
                             <button
-                                
                                 type="submit"
                                 disabled={isSubmitting}
                                 className="w-full sm:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white dark:text-zinc-950 font-semibold rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm shadow-emerald-500/10"
