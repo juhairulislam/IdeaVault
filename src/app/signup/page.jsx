@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
-import {  useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 
 
@@ -45,14 +45,16 @@ const SignupPage = () => {
             toast.success('Successful sign up')
         }
 
-    window.location.href = destination;
+        window.location.href = destination;
+
+        }
 
 
-    const handleGoogleSignUp = async()=>{
-             await authClient.signIn.social({
-            provider: "google",
-          });
-    }
+        
+        const handleGoogleSignUp = async () => {
+            await authClient.signIn.social({
+                provider: "google",
+            });
 
     };
 

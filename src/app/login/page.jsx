@@ -45,11 +45,11 @@ const LoginPage = () => {
 
 
 
-  const handleGoogleLogin =async () =>{
+  const handleGoogleLogin = async () => {
 
-     await authClient.signIn.social({
-    provider: "google",
-  });
+    await authClient.signIn.social({
+      provider: "google",
+    });
 
   }
 
@@ -170,13 +170,13 @@ const LoginPage = () => {
               </div>
               <div className="relative flex justify-center text-xs uppercase">
                 <span className="bg-white dark:bg-zinc-900 px-3 text-zinc-400 dark:text-zinc-500 font-medium">
-                  Or 
+                  Or
                 </span>
               </div>
             </div>
 
             <button
-            onClick={handleGoogleLogin}
+              onClick={handleGoogleLogin}
               type="button"
               className="w-full py-3 px-4 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 font-medium text-sm rounded-xl transition-all duration-200 flex items-center justify-center gap-2.5 active:scale-[0.99]"
             >
