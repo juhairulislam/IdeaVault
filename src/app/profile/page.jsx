@@ -1,5 +1,11 @@
 import React from 'react';
 
+
+export const metadata = {
+  title: "IdeaVault – Profile",
+  description: "This is Profile page of IdeaVault",
+};
+
 const ProfilePage = () => {
     return (
         <div>
