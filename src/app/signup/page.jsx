@@ -47,6 +47,13 @@ const SignupPage = () => {
 
     window.location.href = destination;
 
+
+    const handleGoogleSignUp = async()=>{
+             await authClient.signIn.social({
+            provider: "google",
+          });
+    }
+
     };
 
     return (
@@ -216,6 +223,7 @@ const SignupPage = () => {
                         </div>
 
                         <button
+                        onClick={handleGoogleSignUp}
                             type="button"
                             className="w-full px-4 py-2.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/40 text-zinc-700 dark:text-zinc-300 font-medium rounded-xl flex items-center justify-center gap-2.5 transition-all duration-200 text-sm cursor-pointer"
                         >
