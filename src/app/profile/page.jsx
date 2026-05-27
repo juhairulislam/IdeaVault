@@ -6,10 +6,11 @@ import ProfileUpdateModal from '@/components/ProfileUpdateModal';
 
 const ProfilePage = () => {
   const { data: session, isPending } = useSession();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Structural Safeguard: Render clean premium skeleton during authentication resolution
-  if (isPending) {
+
+
+if (isPending) {
     return (
       <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4">
         <div className="w-full max-w-2xl bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl p-8 space-y-6 animate-pulse">
