@@ -1,30 +1,39 @@
 'use client'
+import { authClient, useSession } from '@/lib/auth-client';
 import React from 'react';
 
 const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
+    const { data: session, isPending } = useSession();
+    const user = session?.user;
 
     if (!isOpen) return null;
 
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const name = e.target.name.value;
+        const image = e.target.image.value;
+
+        try {
+            await authClient.updateUser({ name, image });
+            onClose(); 
+        } catch (error) {
+            console.error(error);
+            toast.error("Update failed!");
+        }
     };
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-
             <div 
                 onClick={onClose}
                 className="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity"
             />
 
-
             <div 
                 onClick={(e) => e.stopPropagation()}
                 className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200"
             >
-                
                 {/* Modal Header */}
                 <div className="px-6 py-4 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
                     <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
@@ -41,10 +50,7 @@ const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
                     </button>
                 </div>
 
-
                 <form onSubmit={handleSubmit} className="p-6 space-y-5">
-                    
-
                     <div className="space-y-1.5">
                         <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block">
                             Update Name
@@ -58,7 +64,6 @@ const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
                         />
                     </div>
 
-
                     <div className="space-y-1.5">
                         <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block">
                             Profile Image URL
@@ -71,7 +76,6 @@ const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
                             className="w-full px-3.5 py-2.5 text-sm bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 placeholder-zinc-400 dark:placeholder-zinc-600 transition-all duration-200"
                         />
                     </div>
-
 
                     <div className="flex items-center justify-end gap-3 pt-3 border-t border-zinc-100 dark:border-zinc-800 mt-2">
                         <button
@@ -88,7 +92,6 @@ const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
                             Update Profile
                         </button>
                     </div>
-
                 </form>
             </div>
         </div>

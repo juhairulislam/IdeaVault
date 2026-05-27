@@ -31,7 +31,7 @@ if (isPending) {
     );
   }
 
-  // Defensive Assignments: Block structural crashes if properties settle as null
+
   const user = session?.user;
   const name = user?.name || 'Anonymous Innovator';
   const email = user?.email || 'no-email@ideavault.io';
