@@ -4,8 +4,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 
 const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
-    const { data: session, isPending } = useSession();
-    const user = session?.user;
+  
 
     if (!isOpen) return null;
 
@@ -17,7 +16,7 @@ const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
 
         try {
             await authClient.updateUser({ name, image });
-                        toast.success("Update Successful!");
+                        toast.success("Profile Update Successful!");
 
             onClose(); 
         } catch (error) {
