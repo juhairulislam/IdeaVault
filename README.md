@@ -73,4 +73,4 @@ IdeaVault aims to create a collaborative space where entrepreneurs, developers, 
 
 👨‍💻 Developer
 
-Developed by ```Juhairul Islam`` `
+Developed by Juhairul Islam
