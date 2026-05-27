@@ -150,7 +150,7 @@ const CommentSection = ({ ideaId, token, currentEmail }) => {
           className="flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500 transition-colors disabled:opacity-50"
         >
           <HiPaperAirplane className="h-4 w-4" />
-          {isLoading ? 'Posting...' : 'Post'}
+          {isLoading ? 'Loading...' : 'Comment'}
         </button>
       </form>
 
