@@ -1,5 +1,5 @@
 'use client'
-import { authClient, useSession } from '@/lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 import React from 'react';
 import toast from 'react-hot-toast';
 
