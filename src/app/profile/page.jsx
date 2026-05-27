@@ -9,7 +9,6 @@ const ProfilePage = () => {
     const { data: session, isPending } = useSession();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const router = useRouter();
 
     useEffect(() => {
         setIsMounted(true);
@@ -52,7 +51,7 @@ const ProfilePage = () => {
 
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-50 dark:to-zinc-400 bg-clip-text text-transparent">
-                        Account Workspace
+                    User Profile
                     </h1>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
                         Manage your credentials, platform identity, and security authorization nodes.

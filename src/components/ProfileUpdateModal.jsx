@@ -1,6 +1,7 @@
 'use client'
 import { authClient, useSession } from '@/lib/auth-client';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
     const { data: session, isPending } = useSession();
@@ -16,10 +17,11 @@ const ProfileUpdateModal = ({ isOpen, onClose, currentName }) => {
 
         try {
             await authClient.updateUser({ name, image });
+                        toast.success("Update Successful!");
+
             onClose(); 
         } catch (error) {
             console.error(error);
-            toast.error("Update failed!");
         }
     };
 

@@ -41,7 +41,7 @@ const LoginPage = () => {
       toast.error(error.message);
       return;
     } else {
-      toast.success('Successful Login')
+      toast.success('Login Successful')
     }
 
     window.location.href = destination;
