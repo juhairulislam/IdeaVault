@@ -11,11 +11,12 @@ import {
 import { BiCategory } from 'react-icons/bi';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
+import CommentSection from '@/components/CommentSection';
 
 const fetchSingleIdeas = async (id, token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`, {
     headers: {
-      authorization: `Bearer ${token}` || ""
+      'Authorization': `Bearer ${token}`
     }
   });
   const data = await res.json();
@@ -39,6 +40,11 @@ export async function generateMetadata({ params }) {
 }
 
 const IdeaDetailsPage = async ({ params }) => {
+
+  const session = await auth.api.getSession({
+  headers: await headers()
+});
+const currentUserEmail = session?.user?.email;
 
   const { token } = await auth.api.getToken({
     headers: await headers()
@@ -112,13 +118,12 @@ const IdeaDetailsPage = async ({ params }) => {
               <Image
                 width={800}
                 height={450}
-                src={imageURL}
-                alt={title}
+                src={imageURL && imageURL.trim() !== "" ? imageURL : 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe'}
+                alt={title && title.trim() !== "" ? title : 'Idea Image'}
                 className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 loading="eager"
                 priority
                 referrerPolicy="no-referrer"
-
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
@@ -165,6 +170,9 @@ const IdeaDetailsPage = async ({ params }) => {
               </p>
             </div>
 
+            {/* Comment Section Component */}
+            <CommentSection currentEmail={currentUserEmail} ideaId={_id} token={token} />
+
           </div>
 
           {/* Operational Metrics Side Deck Panels (Right Column) */}
@@ -181,7 +189,7 @@ const IdeaDetailsPage = async ({ params }) => {
                     width={100}
                     height={100}
                     referrerPolicy="no-referrer"
-                     src={authorPhoto}
+                    src={authorPhoto}
                     alt={authorName}
                     className="h-full w-full object-cover"
                   />

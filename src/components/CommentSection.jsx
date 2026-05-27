@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { toast } from 'react-hot-toast';
 import { HiOutlineTrash, HiOutlinePencilSquare, HiPaperAirplane } from 'react-icons/hi2';
 
-const CommentSection = ({ ideaId, token }) => {
+const CommentSection = ({ ideaId, token, currentEmail }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [editingCommentId, setEditingCommentId] = useState(null);
@@ -135,7 +135,6 @@ const CommentSection = ({ ideaId, token }) => {
         Discussion Forum ({comments.length})
       </h3>
 
-      {/* Input box field form */}
       <form onSubmit={handleAddComment} className="mb-8 flex gap-4">
         <input
           type="text"
@@ -155,7 +154,6 @@ const CommentSection = ({ ideaId, token }) => {
         </button>
       </form>
 
-      {/* Feed List wrapper container */}
       <div className="space-y-6">
         {comments.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-zinc-400 text-center py-4">
@@ -163,22 +161,20 @@ const CommentSection = ({ ideaId, token }) => {
           </p>
         ) : (
           comments.map((comment) => (
-            <div 
-              key={comment._id} 
+            <div
+              key={comment._id}
               className="flex gap-4 border-b border-slate-100 dark:border-zinc-800/50 pb-5 last:border-0 last:pb-0"
             >
-              {/* Profile Avatar Frame Container */}
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-slate-100 dark:bg-zinc-800">
                 <Image
-                  src={comment.userPhoto || 'https://images.unsplash.com/photo-1740252117044-2af197eea287'}
-                  alt={comment.userName || 'User profile'}
+                  src={comment.userPhoto && comment.userPhoto.trim() !== "" ? comment.userPhoto : 'https://images.unsplash.com/photo-1740252117044-2af197eea287'}
+                  alt={comment.userName && comment.userName.trim() !== "" ? comment.userName : 'User profile'}
                   width={40}
                   height={40}
                   className="h-full w-full object-cover"
                 />
               </div>
 
-              {/* Layout Content Meta Unit block */}
               <div className="flex-1">
                 <div className="flex items-center justify-between">
                   <div>
@@ -195,29 +191,29 @@ const CommentSection = ({ ideaId, token }) => {
                     </span>
                   </div>
 
-                  {/* UI Actions Control Deck trigger elements */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => {
-                        setEditingCommentId(comment._id);
-                        setEditingText(comment.commentText);
-                      }}
-                      className="p-1 text-slate-400 hover:text-emerald-500 transition-colors"
-                      title="Edit Comment"
-                    >
-                      <HiOutlinePencilSquare className="h-4.5 w-4.5" />
-                    </button>
-                    <button
-                      onClick={() => handleDeleteComment(comment._id)}
-                      className="p-1 text-slate-400 hover:text-red-500 transition-colors"
-                      title="Delete Comment"
-                    >
-                      <HiOutlineTrash className="h-4.5 w-4.5" />
-                    </button>
-                  </div>
+                  {currentEmail === comment.userEmail && (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          setEditingCommentId(comment._id);
+                          setEditingText(comment.commentText);
+                        }}
+                        className="p-1 text-slate-400 hover:text-emerald-500 transition-colors"
+                        title="Edit Comment"
+                      >
+                        <HiOutlinePencilSquare className="h-4.5 w-4.5" />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteComment(comment._id)}
+                        className="p-1 text-slate-400 hover:text-red-500 transition-colors"
+                        title="Delete Comment"
+                      >
+                        <HiOutlineTrash className="h-4.5 w-4.5" />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
-                {/* Body Core Block Text content switch / state switch panel layout */}
                 {editingCommentId === comment._id ? (
                   <div className="mt-3 flex flex-col sm:flex-row gap-2">
                     <input
