@@ -154,7 +154,7 @@ const SignupPage = () => {
                                 </label>
                                 <input
                                     required
-                                    type="text"
+                                    type="url"
                                     name="image"
                                     placeholder="https://images.unsplash.com/photo-example"
                                     className="w-full px-3.5 py-2.5 bg-zinc-50/50 dark:bg-zinc-950/50 border border-zinc-200/80 dark:border-zinc-800 rounded-xl text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/10 focus:border-emerald-500 dark:focus:border-emerald-500 transition-all duration-200 text-sm"
@@ -189,7 +189,7 @@ const SignupPage = () => {
                                             </span>
                                         </div>
 
-                                        {/* Requirement 2: Uppercase Letter */}
+                                        {/* Uppercase Letter */}
                                         <div className="flex items-center gap-2 text-xs">
                                             <span className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${hasUppercase ? 'bg-emerald-500 shadow-sm shadow-emerald-500/50' : 'bg-zinc-300 dark:bg-zinc-700'}`} />
                                             <span className={`transition-colors duration-200 ${hasUppercase ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-zinc-400 dark:text-zinc-500'}`}>
@@ -197,7 +197,7 @@ const SignupPage = () => {
                                             </span>
                                         </div>
 
-                                        {/* Requirement 3: Lowercase Letter */}
+                                        {/* Lowercase Letter */}
                                         <div className="flex items-center gap-2 text-xs">
                                             <span className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${hasLowercase ? 'bg-emerald-500 shadow-sm shadow-emerald-500/50' : 'bg-zinc-300 dark:bg-zinc-700'}`} />
                                             <span className={`transition-colors duration-200 ${hasLowercase ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-zinc-400 dark:text-zinc-500'}`}>
