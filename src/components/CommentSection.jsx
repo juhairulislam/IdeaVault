@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { toast } from 'react-hot-toast';
 import { HiOutlineTrash, HiOutlinePencilSquare, HiPaperAirplane } from 'react-icons/hi2';
 
-const CommentSection = ({ ideaId, token, currentEmail }) => {
+const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [editingCommentId, setEditingCommentId] = useState(null);
@@ -54,6 +54,7 @@ const CommentSection = ({ ideaId, token, currentEmail }) => {
         },
         body: JSON.stringify({
           ideaId,
+          ideaTitle, 
           commentText: newComment.trim()
         })
       });

@@ -171,7 +171,7 @@ const currentUserEmail = session?.user?.email;
             </div>
 
             {/* Comment Section Component */}
-            <CommentSection currentEmail={currentUserEmail} ideaId={_id} token={token} />
+            <CommentSection currentEmail={currentUserEmail} ideaTitle = {ideas.title} ideaId={_id} token={token} />
 
           </div>
 
