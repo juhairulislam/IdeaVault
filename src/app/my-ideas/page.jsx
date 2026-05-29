@@ -43,24 +43,24 @@ const MyIdeasPage = async () => {
                     <Image
                       width={400}
                       height={200}
-                      src={idea.imageURL}
-                      alt={idea.title || "Idea Image"}
+                      src={idea?.imageURL}
+                      alt={idea?.title || "Idea Image"}
                       className="w-full h-full object-cover"
                     />
                   </div>
                 )}
 
-                {idea.category && (
+                {idea?.category && (
                   <span className="inline-block text-xs font-semibold px-2.5 py-1 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 rounded-full mb-3">
-                    {idea.category}
+                    {idea?.category}
                   </span>
                 )}
 
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
-                  {idea.title}
+                  {idea?.title}
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2 line-clamp-2">
-                  {idea.shortDescription}
+                  {idea?.shortDescription}
                 </p>
               </div>
 
