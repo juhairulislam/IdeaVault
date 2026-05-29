@@ -117,7 +117,7 @@ const AddIdeaPage = () => {
                                     Estimated Budget
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="estimatedBudget"
                                     required
                                     placeholder="e.g., $15,000 - $25,000"
