@@ -27,9 +27,15 @@ const MyInteractionsPage = async () => {
 
     const allComments = res.ok ? await res.json() : [];
 
+
     const myComments = allComments.filter(
         (comment) => comment.userEmail === currentUserEmail
     );
+
+
+    const sortedComments = myComments.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+    });
 
     return (
         <section className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
@@ -64,14 +70,14 @@ const MyInteractionsPage = async () => {
                                 Total Comments
                             </p>
                             <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white mt-0.5">
-                                {myComments.length}
+                                {sortedComments.length}
                             </h2>
                         </div>
                     </div>
                 </div>
 
                 {/* Empty State */}
-                {myComments.length === 0 ? (
+                {sortedComments.length === 0 ? (
                     <div className="rounded-3xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900/30 p-12 md:p-20 text-center backdrop-blur-sm">
                         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
                             <svg
@@ -100,7 +106,7 @@ const MyInteractionsPage = async () => {
                 ) : (
                     /* Comments List */
                     <div className="space-y-5">
-                        {myComments.map((comment) => (
+                        {sortedComments.map((comment) => (
                             <div
                                 key={comment._id}
                                 className="group relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-5 md:p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-zinc-300 dark:hover:border-zinc-700 hover:-translate-y-0.5"

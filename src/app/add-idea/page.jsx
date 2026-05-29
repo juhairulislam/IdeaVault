@@ -103,11 +103,11 @@ const AddIdeaPage = () => {
                                     className="w-full px-4 py-2.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/10 transition-all duration-200 appearance-none"
                                 >
                                     <option value="" disabled>Select enterprise sector</option>
-                                    <option value="Tech">Technology & SaaS</option>
+                                    <option value="Tech">Technology</option>
                                     <option value="Health">Healthcare & Biotech</option>
                                     <option value="AI">Artificial Intelligence & ML</option>
-                                    <option value="Education">EdTech & Infrastructure</option>
-                                    <option value="Fintech">Financial Infrastructure</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Financial">Financial</option>
                                 </select>
                             </div>
 
@@ -135,7 +135,7 @@ const AddIdeaPage = () => {
                                     Image URL
                                 </label>
                                 <input
-                                    type="text"
+                                    type="url"
                                     name="imageURL"
                                     required
                                     placeholder="https://images.unsplash.com/..."
