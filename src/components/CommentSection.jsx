@@ -180,7 +180,7 @@ const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-sm font-bold text-slate-900 dark:text-white">
-                      {comment.userName}
+                      {comment?.userName}
                     </span>
                     <span className="ml-3 text-xs text-slate-400 dark:text-zinc-500">
                       {new Date(comment.createdAt).toLocaleDateString('en-US', {
@@ -196,8 +196,8 @@ const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => {
-                          setEditingCommentId(comment._id);
-                          setEditingText(comment.commentText);
+                          setEditingCommentId(comment?._id);
+                          setEditingText(comment?.commentText);
                         }}
                         className="p-1 text-slate-400 hover:text-emerald-500 transition-colors"
                         title="Edit Comment"
@@ -243,7 +243,7 @@ const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
                   </div>
                 ) : (
                   <p className="mt-1 text-sm text-slate-600 dark:text-zinc-300 whitespace-pre-line leading-relaxed">
-                    {comment.commentText}
+                    {comment?.commentText}
                   </p>
                 )}
               </div>
