@@ -1,5 +1,6 @@
 'use client'
 import { useSession } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -10,6 +11,8 @@ const AddIdeaPage = () => {
     const { data: session, isPending } = useSession();
 
     const user = session?.user;
+
+    const router = useRouter();
 
 
     const onSubmit = async (e) => {
@@ -41,6 +44,10 @@ const AddIdeaPage = () => {
             },
             body: JSON.stringify(finalData)
         });
+        if (res.ok) {
+      router.refresh(); 
+      router.push('/ideas');
+    }
 
         const data = await res.json();
 

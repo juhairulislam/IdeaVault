@@ -2,7 +2,7 @@ import React from 'react';
 import IdeaCard from '@/components/IdeaCard';
 import Form from 'next/form';
 import { BiLayer, BiSearchAlt, BiFilterAlt } from 'react-icons/bi';
-import CategorySelect from '@/components/CategorySelect'; 
+import CategorySelect from '@/components/CategorySelect';
 
 
 export const metadata = {
@@ -11,18 +11,18 @@ export const metadata = {
 };
 
 const fetchIdeas = async (searchQuery) => {
-  const url = searchQuery 
+  const url = searchQuery
     ? `${process.env.NEXT_PUBLIC_SERVER_URL}/ideas?search=${encodeURIComponent(searchQuery)}`
     : `${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`;
 
-  const res = await fetch(url, { next: { revalidate: 60 } });
-  if (!res.ok) return [];
+  const res = await fetch(url, { cache: 'no-store' });
 
   const data = await res.json();
   return data || [];
 };
 
 const IdeasPage = async ({ searchParams }) => {
+
   const resolvedParams = await searchParams;
   const searchQuery = resolvedParams?.search || '';
   const selectedCategory = resolvedParams?.category || '';
@@ -78,7 +78,7 @@ const IdeasPage = async ({ searchParams }) => {
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <BiFilterAlt className="h-4 w-4 text-zinc-400 dark:text-zinc-500" />
             </span>
-            
+
 
             <CategorySelect categories={categories} selectedCategory={selectedCategory} />
 
@@ -103,7 +103,7 @@ const IdeasPage = async ({ searchParams }) => {
           </div>
         ) : (
 
-<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredIdeas.map((idea) => (
               <IdeaCard key={idea._id} idea={idea} />
             ))}
