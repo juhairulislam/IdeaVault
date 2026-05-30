@@ -38,7 +38,7 @@ Server Repository: [Server GitHub Link]
 * JWT Authentication
 * CORS
 * dotenv
-* Batter Auth
+* Better Auth
 
 ---
 
