@@ -5,12 +5,17 @@ import Image from 'next/image';
 import { toast } from 'react-hot-toast';
 import { HiOutlineTrash, HiOutlinePencilSquare, HiPaperAirplane } from 'react-icons/hi2';
 
-const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
+const CommentSection = ({ ideaId, ideaTitle, token, currentEmail }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editingText, setEditingText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [commentIdToDelete, setCommentIdToDelete] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     if (ideaId) {
@@ -106,12 +111,25 @@ const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
     }
   };
 
-  const handleDeleteComment = async (commentId) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this comment?');
-    if (!confirmDelete) return;
 
+  const openDeleteModal = (commentId) => {
+    setCommentIdToDelete(commentId);
+    setIsDeleteModalOpen(true);
+  };
+
+
+  const closeDeleteModal = () => {
+    setCommentIdToDelete(null);
+    setIsDeleteModalOpen(false);
+  };
+
+
+  const handleConfirmDelete = async () => {
+    if (!commentIdToDelete) return;
+
+    setIsDeleting(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentIdToDelete}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -121,12 +139,15 @@ const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
       if (res.ok) {
         toast.success('Comment deleted');
         fetchComments();
+        closeDeleteModal();
       } else {
         const errData = await res.json();
         toast.error(errData.message || 'Could not delete comment');
       }
     } catch (error) {
       toast.error('Failed to connect to server');
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -205,7 +226,7 @@ const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
                         <HiOutlinePencilSquare className="h-4.5 w-4.5" />
                       </button>
                       <button
-                        onClick={() => handleDeleteComment(comment._id)}
+                        onClick={() => openDeleteModal(comment._id)}
                         className="p-1 text-slate-400 hover:text-red-500 transition-colors"
                         title="Delete Comment"
                       >
@@ -250,6 +271,44 @@ const CommentSection = ({ ideaId, ideaTitle,  token, currentEmail }) => {
             </div>
           ))
         )}
+      </div>
+
+
+      <input 
+        type="checkbox" 
+        id="delete_confirmation_modal" 
+        className="modal-toggle" 
+        checked={isDeleteModalOpen}
+        onChange={() => {}}
+      />
+      <div className="modal modal-bottom sm:modal-middle" role="dialog">
+        <div className="modal-box border border-slate-200/60 dark:border-zinc-800/60 bg-white dark:bg-zinc-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white">Delete Comment</h3>
+          <p className="py-4 text-sm text-slate-600 dark:text-zinc-400">
+            Are you sure you want to permanently delete this comment? This action cannot be undone.
+          </p>
+          <div className="modal-action gap-2">
+            <button 
+              onClick={closeDeleteModal} 
+              disabled={isDeleting}
+              className="btn btn-sm rounded-lg bg-slate-100 hover:bg-slate-200 border-0 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+            >
+              Cancel
+            </button>
+            <button 
+              onClick={handleConfirmDelete}
+              disabled={isDeleting}
+              className="btn btn-sm rounded-lg bg-red-600 hover:bg-red-500 border-0 text-white min-w-[70px]"
+            >
+              {isDeleting ? (
+                <span className="loading loading-spinner loading-xs"></span>
+              ) : (
+                'Delete'
+              )}
+            </button>
+          </div>
+        </div>
+        <div className="modal-backdrop" onClick={closeDeleteModal}></div>
       </div>
     </div>
   );
