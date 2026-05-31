@@ -31,6 +31,8 @@ export async function generateMetadata({ params }) {
     headers: await headers()
   });
 
+  console.log("TOKEN:", token);
+
   const ideas = await fetchSingleIdeas(ideasId, token);
 
   return {
