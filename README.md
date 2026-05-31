@@ -6,11 +6,7 @@
 
 # 🚀 Live Website
 
-[Live Site URL Here]
-
-# 🔗 Repositories
-Client Repository: [Client GitHub Link]
-Server Repository: [Server GitHub Link]
+[\[Live Site URL Here\]](https://ideavault-fawn.vercel.app/)
 
 ---
 
