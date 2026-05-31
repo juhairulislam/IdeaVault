@@ -6,7 +6,7 @@
 
 # 🚀 Live Website
 
-[\[Live Site URL Here\]](https://ideavault-fawn.vercel.app/)
+[\[Live Site URL \]](https://ideavault-fawn.vercel.app/)
 
 ---
 
