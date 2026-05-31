@@ -75,7 +75,7 @@ const SignupPage = () => {
                             <Image
                                 width={32}
                                 height={32}
-                                src="/ideaVaultLogo.png"
+                                src="/ideavaultLogo.png"
                                 alt="IdeaVault Logo"
                                 className="h-6 w-auto object-contain"
                             />
